@@ -4,7 +4,12 @@ import "../styles/Footer.css"
 
 function Footer() {
   return (
-    <div>Footer</div>
+    <div className='footer'>
+      <div>
+        <h3>Learn Create Share</h3>
+        <p>Powered by Manaiakalani Blogging Platform</p>
+      </div>
+    </div>
   )
 }
 
