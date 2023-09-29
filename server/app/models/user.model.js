@@ -84,7 +84,7 @@ User.createUser=(newUser, result) =>{
 User.editById=(editedData, result)=>{
 
     //Execute the query to edit the user
-    db.query("UPDATE Users SET googleID=?, username=?, fname=?, lname=?, profilePicture=?, classID=? WHERE id=?",editedData,(err,res)=>{
+    db.query("UPDATE Users SET googleID=?, username=?, fname=?, lname=?, profilePicture=?, classID=? WHERE userID=?",editedData,(err,res)=>{
     
     //If erroroccurs, display 
     if(err){

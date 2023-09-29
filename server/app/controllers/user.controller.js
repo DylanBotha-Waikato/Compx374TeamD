@@ -27,9 +27,9 @@ exports.findByID = (req,res)=>{
     User.findUserByID(userID, (err, data)=>{
         //display error 
         if(err)
-            res.status(500).send({message: err.message || "Some error occurred while creating the user."});
-        else 
-        res.send(data);
+            res.status(500).send({message: err.message || "Some error occurred while getting the user."});
+        else
+            res.send(data);
     });
 };
 
@@ -50,12 +50,12 @@ exports.removeByID = (req,res)=>{
         if(err)
             res.status(500).send({message: err.message || "Some error occurred while creating the user."});
         else 
-        res.send(data);
+            res.send(data);
     });
 };
 
 //The controller to create a user
-exports.create = (req,res)=>{
+exports.create = (req,res) => {
     //If no data is inserted, display error 
     if (!req.body) {
         res.status(400).send({message: "Content for creating user is empty!"});
