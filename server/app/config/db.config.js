@@ -1,6 +1,6 @@
 module.exports = {
-  HOST: "learn-mysql.cms.waikato.ac.nz",
-  USER: "<-- DB Username -->",
-  PASSWORD: "<-- DB Password -->",
-  DB: "<-- DB Username -->"
+  HOST: "localhost",
+  USER: "root",
+  PASSWORD: "",
+  DB: "lcs"
 };
