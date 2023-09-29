@@ -4,6 +4,7 @@ module.exports = app => {
   const users = require("../controllers/user.controller");
   const posts = require("../controllers/post.controller");
   const classes = require("../controllers/class.controller");
+  const comment = require("../controllers/comment.controller");
 
   // ----------------------------------------------- Users Routes ----------------------------------------------------//
   app.route("/users")
@@ -38,14 +39,31 @@ module.exports = app => {
   // ----------------------------------------------- Class Routes ----------------------------------------------------//
   app.route("/class")
     .get(classes.getAllClasses)               // The router to get all classes
-    .post(classes.createClass)                // The router to create a new class
+    .post(classes.createClass);               // The router to create a new class
 
   app.route("/class/classID/:classID")
     .get(classes.getByID)                     // The router to get a class by ID
-    .delete(classes.removeClassByID)          // The router to remove a class by ID
+    .delete(classes.removeClassByID);         // The router to remove a class by ID
 
   app.route("/class/className/:className")
-    .get(classes.getByName)                   // The router to get a class by name
+    .get(classes.getByName);                  // The router to get a class by name
+  
+  // -----------------------------------------------------------------------------------------------------------------//
+
+  // ----------------------------------------------- Comment Routes --------------------------------------------------//
+  app.route("/comment")
+    .get(comment.getAllComments)              // The router to get all comments
+    .post(comment.createComment);             // The router to create a new comment
+
+  app.route("/comment/commentID/:commentID")
+    .get(comment.getByID)                     // The router to get a comment by ID
+    .delete(comment.removeByID);              // The router to delete a comment by ID
+
+  app.route("/comment/postID/:postID")
+    .get(comment.getByPostID);                // The router to get comments by post
+
+  app.route("/comment/userID/:userID")
+    .get(comment.getByUserID);                // The router to get comments by user
   
   // -----------------------------------------------------------------------------------------------------------------//
 
