@@ -1,17 +1,12 @@
-USE lcs
+USE lcs;
 
-DROP TABLE Class
-DROP TABLE Users
-DROP TABLE Post
-DROP TABLE Comment
-
-CREATE TABLE Class(
-	classID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Class(
+	classID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	className varchar(255)
 );
 
-CREATE TABLE Users(
-	userID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Users(
+	userID int NOT NULL auto_increment PRIMARY KEY,
 	googleID VARCHAR(255) NOT NULL,
 	username VARCHAR(255) UNIQUE,
 	fname VARCHAR(255),
@@ -21,8 +16,8 @@ CREATE TABLE Users(
 	FOREIGN KEY (classID) REFERENCES Class (classID)
 );
 
-CREATE TABLE Post(
-	postID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Post(
+	postID INT NOT NULL auto_increment PRIMARY KEY,
 	title VARCHAR(255),
 	content TEXT,
 	published DATETIME,
@@ -30,8 +25,8 @@ CREATE TABLE Post(
 	FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
-CREATE TABLE Comment(
-	commentID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Comment(
+	commentID INT NOT NULL auto_increment PRIMARY KEY,
 	content TEXT,
 	published DATETIME,
 	userID INT,
@@ -39,4 +34,3 @@ CREATE TABLE Comment(
 	FOREIGN KEY (userID) REFERENCES Users(userID),
 	FOREIGN KEY (postID) REFERENCES Post(postID)
 );
-
