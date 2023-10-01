@@ -3,8 +3,8 @@ const User = require("../models/user.model");
 //const googleSSO = require("./googleSSO.env");
 
 // CHANGE VISIBILY / PERMISSIONS TO THESE LATER
-const CLIENT_ID = "1037857344941-iba1om7sfqec5jtkhea0jav89115j721.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
+const CLIENT_ID = "";
+const CLIENT_SECRET = "";
 
 module.exports = (passport) => {
 
