@@ -45,6 +45,23 @@ User.findUserByID=(userID, result) =>{
     });
 };
 
+User.findUserByGoogleID=(googleID, result) =>{
+
+    //Retrieval query
+    db.query("SELECT * FROM Users where googleID=?", googleID, (err,res)=>{
+
+        //if an error occurs, display
+        if(err){
+            console.log("error:",err);
+            return;
+        }
+
+        //Display result of query
+        console.log("User: ", res);
+        result(null, res);
+    });
+};
+
 User.removeUserByID=(userID, result) =>{
 
     //Delete query

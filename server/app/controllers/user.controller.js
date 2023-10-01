@@ -33,6 +33,27 @@ exports.findByID = (req,res)=>{
     });
 };
 
+//The controller to get a user by their google ID
+exports.findByGoogleID = (req,res)=>{
+    
+    //If no data is inserted, display error 
+    if (!req.body) {
+        res.status(400).send({message: "ID is empty"});
+    }
+
+    //Get user id
+    const googleID = req.body.googleID;
+
+    //Send data to model
+    User.findUserByGoogleID(googleID, (err, data)=>{
+        //display error 
+        if(err)
+            res.status(500).send({message: err.message || "Some error occurred while getting the user."});
+        else
+            res.send(data);
+    });
+};
+
 //The controller to remove a user by their ID
 exports.removeByID = (req,res)=>{
     
