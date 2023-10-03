@@ -37,12 +37,12 @@ exports.findByID = (req,res)=>{
 exports.findByGoogleID = (req,res)=>{
     
     //If no data is inserted, display error 
-    if (!req.body) {
+    if (!req.params) {
         res.status(400).send({message: "ID is empty"});
     }
 
     //Get user id
-    const googleID = req.body.googleID;
+    const googleID = req.params.googleID;
 
     //Send data to model
     User.findUserByGoogleID(googleID, (err, data)=>{

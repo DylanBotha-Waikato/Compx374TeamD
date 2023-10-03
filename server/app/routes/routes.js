@@ -21,6 +21,9 @@ module.exports = app => {
     .delete(users.removeByID)                 // The router to remove a specific user
     .put(users.editUserByID);                 // The router to edit user details by their id  | needs fixing
 
+    app.route("/users/googleID/:googleID")
+    .get(users.findByGoogleID);               // The router to get the user by their google id 
+
   // -----------------------------------------------------------------------------------------------------------------//
 
   // ----------------------------------------------- Post Routes -----------------------------------------------------//
@@ -74,10 +77,22 @@ module.exports = app => {
 
   // -------------------------------------------- Google SSO Routes --------------------------------------------------//
   app.route("/auth/google")
-    .get(passport.authenticate("google", {scope: ["email", "profile"]}));
+    .get(
+      passport.authenticate("google", 
+        {scope: ["email", "profile"]}
+      ));
 
   app.route("/auth/google/callback")
-    .get(passport.authenticate("google", {session: false}), (req, res) => {res.redirect("/profile");});
+    .get(
+      passport.authenticate("google", { session: false }),
+      (req, res) => {
+        res.redirect("/profile");
+      }
+    );
 
-  app.route("/profile", users.findByGoogleID);
+  app.route("/profile") 
+    .get((req, res) => {
+      console.log(req);
+      res.send("Welcome");
+  });
 }

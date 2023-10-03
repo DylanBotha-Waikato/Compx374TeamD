@@ -87,7 +87,6 @@ User.createUser=(newUser, result) =>{
         //if an error occurs display
         if(err){
             console.log("Error:",err); 
-            result(err,null); 
             return;
         }
 
