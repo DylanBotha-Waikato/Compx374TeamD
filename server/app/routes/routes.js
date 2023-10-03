@@ -1,3 +1,8 @@
+const passportConfig = require("../config/passportConfig");
+
+const passport = require("passport");
+require("../config/passportConfig")(passport);
+
 module.exports = app => {
 
   // Import controllers for each table
@@ -8,13 +13,16 @@ module.exports = app => {
 
   // ----------------------------------------------- Users Routes ----------------------------------------------------//
   app.route("/users")
-    .get(users.findAll)                       // The router to get all of the projects
+    .get(users.findAll)                       // The router to get all of the users
     .post(users.create);                      // The router to create a new user
 
   app.route("/users/userID/:userID")
     .get(users.findByID)                      // The router to get the user by their id 
     .delete(users.removeByID)                 // The router to remove a specific user
     .put(users.editUserByID);                 // The router to edit user details by their id  | needs fixing
+
+    app.route("/users/googleID/:googleID")
+    .get(users.findByGoogleID);               // The router to get the user by their google id 
 
   // -----------------------------------------------------------------------------------------------------------------//
 
@@ -67,4 +75,24 @@ module.exports = app => {
   
   // -----------------------------------------------------------------------------------------------------------------//
 
+  // -------------------------------------------- Google SSO Routes --------------------------------------------------//
+  app.route("/auth/google")
+    .get(
+      passport.authenticate("google", 
+        {scope: ["email", "profile"]}
+      ));
+
+  app.route("/auth/google/callback")
+    .get(
+      passport.authenticate("google", { session: false }),
+      (req, res) => {
+        res.redirect("/profile");
+      }
+    );
+
+  app.route("/profile") 
+    .get((req, res) => {
+      console.log(req);
+      res.send("Welcome");
+  });
 }

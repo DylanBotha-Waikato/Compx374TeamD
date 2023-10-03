@@ -11,6 +11,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Google SSO
+const passport = require("passport");
+require("./app/config/passportConfig")(passport);
+
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to the application." });
