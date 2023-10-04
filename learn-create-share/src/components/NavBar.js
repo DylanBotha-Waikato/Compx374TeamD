@@ -16,7 +16,7 @@ function NavBar() {
         <Link to="/">Learn Create Share</Link>
       </div>
       <div className='rightSide'>
-        <Link to="/">
+        <Link to="http://localhost:3000/auth/google">
           <AccountCircleIcon/>
         </Link>
         <Link to="/">

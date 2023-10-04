@@ -1,8 +1,18 @@
 // Setup Express
 const express = require("express");
-const cors    = require("cors");
+const cors = require("cors");
+const session = require("express-session");
 
 const app = express();
+
+// Use express-session middleware before passport initialization
+app.use(
+  session({
+    secret: "", // Replace with a client secret
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 // To help with accessing this server from Postman
 app.use(cors());
@@ -14,6 +24,9 @@ app.use(express.urlencoded({ extended: true }));
 // Google SSO
 const passport = require("passport");
 require("./app/config/passportConfig")(passport);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // simple route
 app.get("/", (req, res) => {
