@@ -8,11 +8,11 @@ CREATE TABLE IF NOT EXISTS Class(
 CREATE TABLE IF NOT EXISTS Users(
 	userID int NOT NULL auto_increment PRIMARY KEY,
 	googleID VARCHAR(255) NOT NULL,
-	username VARCHAR(255) UNIQUE,
 	fname VARCHAR(255),
 	lname VARCHAR(255),
 	profilePicture VARCHAR(255),
 	classID INT,
+    roles VARCHAR(255),
 	FOREIGN KEY (classID) REFERENCES Class (classID)
 );
 
