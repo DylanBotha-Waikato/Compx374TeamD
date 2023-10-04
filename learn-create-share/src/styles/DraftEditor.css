@@ -1,0 +1,72 @@
+/* Draft.js Editor Container */
+.draft-editor-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Draft.js Editor Content */
+  .draft-editor-content {
+    padding: 10px;
+    min-height: 150px;
+    border: 1px solid #ddd;
+    background-color: white;
+    font-size: 16px;
+  }
+  
+  /* Draft.js Editor Toolbar (if you have one) */
+  .draft-toolbar {
+    background-color: #f5f5f5;
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Draft.js Editor Button (if you have a custom toolbar) */
+  .draft-button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  
+  /* Draft.js Editor Button (hover state) */
+  .draft-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Draft.js Editor Placeholder Text */
+  public-DraftEditorPlaceholder-root {
+    color: #999;
+  }
+  
+  /* Draft.js Editor Selected Text (highlighted) */
+  .public-DraftEditor-content .public-DraftEditor-content .public-DraftStyleDefault-pre {
+    background-color: #fffd8d; /* Change to your preferred highlight color */
+  }
+  
+  /* Draft.js Editor Mention Suggestions (if you have mentions) */
+  .draft-mention-suggestions {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    max-height: 150px;
+    overflow-y: auto;
+  }
+  
+  /* Draft.js Editor Mention Suggestion Item */
+  .draft-mention-suggestion-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  /* Draft.js Editor Mention Suggestion Item (hover state) */
+  .draft-mention-suggestion-item:hover {
+    background-color: #f5f5f5;
+  }
+  
