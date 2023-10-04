@@ -1,9 +1,16 @@
 .card {
-   border: 2px solid black;
+   border: 1px solid black;
    text-align: left;
-   margin: 2%;
+   margin-bottom: 4%;
+   margin-left: 4%;
+   margin-right: 4%;
 }
 
-.widget {
-   background-color: aliceblue;
+.card-body {
+   font-size: 10pt;
 }
+
+.card-title {
+   font-size: 14pt;
+}
+

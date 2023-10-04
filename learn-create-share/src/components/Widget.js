@@ -9,7 +9,7 @@ function Widget() {
             <div class="card-body">
                <h5 class="card-title">About Me</h5>
                <p class="card-text">Here is a little bit of info about me. I love to watch movies and listen to music etc.</p>
-               <a href="#" class="btn btn-primary"></a>
+               <a href="#" class="btn btn-primary">Click Me</a>
             </div>
          </div>
          <div class="card">

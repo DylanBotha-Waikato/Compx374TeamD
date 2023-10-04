@@ -15,13 +15,27 @@ function Home() {
           <Nav2 />
         </div>
         <div class="row">
-            <div class="col-9">
-              <Posts />
-              <Posts />
-            </div>
-            <div class="col-3">
-              <Widget />
-            </div>
+          <div class="col-9">
+              <div class="row">
+                <div class="col">
+                  <Posts />
+                </div>
+                <div class="col">
+                <Posts />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <Posts />
+                </div>
+                <div class="col">
+                <Posts />
+                </div>
+              </div>
+          </div>
+          <div class="col-3">
+            <Widget />
+          </div>
         </div>
       </div>
       <Footer />

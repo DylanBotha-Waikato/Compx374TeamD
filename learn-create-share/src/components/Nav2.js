@@ -10,13 +10,13 @@ function Nav2() {
             <div>
                <ul class="navbar-nav">
                   <li class="nav-item">
-                     <a class="nav-link" href='#'>Create Post</a>
+                     <a class="navbtn nav-link" href='#'>Create Post</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href='#'>Draft Posts</a>
+                     <a class="navbtn nav-link" href='#'>Draft Posts</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href='#'>Published Posts</a>
+                     <a class="navbtn nav-link" href='#'>Published Posts</a>
                   </li>
                </ul>
             </div>

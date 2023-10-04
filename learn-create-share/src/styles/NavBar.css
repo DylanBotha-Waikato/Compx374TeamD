@@ -4,10 +4,18 @@
 .navbar-brand{
     font-weight: 400;
 }
+
+.logo {
+    margin-right: 3%;
+}
     
 .nav-link {
     font-weight: 350;
     color: black;
+}
+
+.navbtn {
+    text-decoration: underline;
 }
 
 
