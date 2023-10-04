@@ -1,8 +1,7 @@
 .footer {
-    display: flex;
-    flex-direction: column;
-    background-color: #15124c;
-    color: white;
+    background-color: #8DC1FF;
+    color: black;
+    text-align: center;
 }
 
 .footer h3{

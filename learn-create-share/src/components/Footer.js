@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import "../styles/Footer.css"
+import "../styles/Footer.css";
 
 function Footer() {
   return (
-    <div className='footer'>
+    <div class="footer mt-auto">
       <div>
         <h3>Learn Create Share</h3>
         <p>Powered by Manaiakalani Blogging Platform</p>
