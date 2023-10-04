@@ -1,11 +1,23 @@
 .navbar {
     background-color: #8DC1FF;
 }
-.navbar-brand, .nav-link {
+.navbar-brand{
+    font-weight: 400;
+}
+    
+.nav-link {
+    font-weight: 350;
     color: black;
 }
+
 
 .navContent {
     margin-left: 3%;
     margin-right: 3%;
+}
+
+.navb2 {
+    background-color: white;
+    margin-bottom: 3%;
+    margin-top: 1%;
 }

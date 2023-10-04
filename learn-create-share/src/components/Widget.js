@@ -4,7 +4,7 @@ import '../styles/Widget.css'
 
 function Widget() {
    return(
-      <div class="container text-center">
+      <div class="widget container text-center">
          <div class="card">
             <div class="card-body">
                <h5 class="card-title">About Me</h5>
