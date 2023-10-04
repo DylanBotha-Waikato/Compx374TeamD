@@ -1,0 +1,14 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #15124c;
+    color: white;
+}
+
+.footer h3{
+    margin: 5px;
+}
+
+.footer p {
+    margin: 5px;
+}

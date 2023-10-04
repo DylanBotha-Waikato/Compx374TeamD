@@ -1,4 +1,9 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+import Logo from "../assets/Ako-Hook-Large.png"
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 
 import "../styles/NavBar.css"
 
