@@ -7,7 +7,7 @@ const User = function (user) {
   this.lname = user.lname;
   this.profilePicture = user.profilePicture;
   this.classID = user.classID;
-  this.role = user.role;
+  this.roles = user.roles;
 };
 
 //Gets all the projects from the database
