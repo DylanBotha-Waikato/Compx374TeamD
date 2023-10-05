@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import Home from './pages/Home';
-
+import './styles/index.css';
 import reportWebVitals from './reportWebVitals';
+import SingleDashboard from './pages/SingleDashboard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Home />
+    <SingleDashboard />
   </React.StrictMode>
 );
 

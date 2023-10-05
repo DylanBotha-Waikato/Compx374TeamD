@@ -22,7 +22,7 @@ class DraftEditor extends Component {
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}
-            placeholder="Start typing..."
+            placeholder="Comment..."
           />
         </div>
       </div>

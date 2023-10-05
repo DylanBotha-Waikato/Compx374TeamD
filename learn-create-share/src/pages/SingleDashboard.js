@@ -5,7 +5,7 @@ import Widget from '../components/Widget';
 import Posts from '../components/Posts';
 import Nav2 from '../components/Nav2';
 
-function Home() {
+function SingleDashboard() {
   return (
   
     <div>
@@ -16,22 +16,8 @@ function Home() {
         </div>
         <div class="row">
           <div class="col-9">
-              <div class="row">
-                <div class="col">
-                  <Posts />
-                </div>
-                <div class="col">
-                <Posts />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <Posts />
-                </div>
-                <div class="col">
-                <Posts />
-                </div>
-              </div>
+              <Posts />
+              <Posts />
           </div>
           <div class="col-3">
             <Widget />
@@ -41,7 +27,7 @@ function Home() {
       <Footer />
     </div>
     
-  )
-}
+  );
+};
 
-export default Home
+export default SingleDashboard
