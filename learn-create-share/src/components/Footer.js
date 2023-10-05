@@ -1,14 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-import "../styles/Footer.css"
+import "../styles/Footer.css";
 
 function Footer() {
   return (
-    <div className='footer'>
-      <div>
-        <h3>Learn Create Share</h3>
-        <p>Powered by Manaiakalani Blogging Platform</p>
-      </div>
+    <div class="footer mt-auto">
+      <h5>Learn Create Share</h5>
+      <p>Powered by Manaiakalani Blogging Platform</p>
     </div>
   )
 }
