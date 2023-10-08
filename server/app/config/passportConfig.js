@@ -3,10 +3,12 @@ const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const User = require("../models/user.model");
 const db = require("../models/db");
 const domains = require("../config/validDomains");
+const jwt = require("jsonwebtoken");
 
 // CHANGE VISIBILY / PERMISSIONS TO THESE LATER
-const CLIENT_ID = "";
-const CLIENT_SECRET = "";
+const CLIENT_ID =
+  "1037857344941-iba1om7sfqec5jtkhea0jav89115j721.apps.googleusercontent.com";
+const CLIENT_SECRET = "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";
 
 module.exports = (passport, res) => {
   // Connect to google cloud through passport
@@ -32,8 +34,18 @@ module.exports = (passport, res) => {
                 if (results.length === 1) {
                   // Get User
                   const user = results[0];
-                  // Return user
-                  return done(null, user);
+
+                  // Generate token from user information
+                  const token = jwt.sign(
+                    { userId: user.userID, googleId: user.googleID },
+                    "F97B29208433F86C7C354EC45F6D8D0D347F774998C6681F14A13DB8D158ED7C"
+                  );
+
+                  // Attach the token to the request object
+                  request.token = token;
+
+                  // Return user via jwt
+                  return done(null, token);
                 } else {
                   // Get user email to check if account can be created
                   let userDomain = profile.emails[0].value.split("@")[1];
@@ -67,8 +79,16 @@ module.exports = (passport, res) => {
                       }
                     });
 
-                    // Return User
-                    return done(null, newUser);
+                    // If a new user is created, generate a JWT for them
+                    const token = jwt.sign(
+                      { userID: newUser.userID, googleID: newUser.googleID },
+                      "F97B29208433F86C7C354EC45F6D8D0D347F774998C6681F14A13DB8D158ED7C"
+                    );
+
+                    // Attach the token to the request object
+                    request.token = token;
+
+                    return done(null, token);
                   } else {
                     // User domain isnt correct
                     return done(null, false);
