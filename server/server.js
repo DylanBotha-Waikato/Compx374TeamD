@@ -8,7 +8,7 @@ const app = express();
 // Use express-session middleware before passport initialization
 app.use(
   session({
-    secret: "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", // Replace with a client secret
+    secret: "", // Replace with a client secret
     resave: false,
     saveUninitialized: true,
   })
