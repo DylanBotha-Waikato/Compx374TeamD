@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/NavBar.css"
 import Logo from "../assets/Kitenga-Hook-Black.png"
 
