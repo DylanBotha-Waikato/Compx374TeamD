@@ -83,11 +83,19 @@ module.exports = (app) => {
     .route("/auth/google/callback")
     .get(passport.authenticate("google", { session: false }), (req, res) => {
       if (req.isAuthenticated()) {
-        // User is authenticated, redirect to a success page or profile page
-        res.redirect("http://localhost:3001/"); // Redirect to your desired URL
+        // User is authenticated, retrieve the token from req.token
+        const token = req.token;
+
+        // Log the token for debugging purposes
+        console.log(token);
+
+        // Redirect the user with the token as a query parameter
+        res.redirect(
+          `http://localhost:3001/auth/google/callback?token=${token}`
+        );
       } else {
         // User is not authenticated (wrong domain)
-        res.redirect("http://localhost:3000/auth/google"); // redirect to login error page (need to implement)
+        res.redirect("http://localhost:3000/auth/google"); // Redirect to login error page (need to implement)
       }
     });
 };
