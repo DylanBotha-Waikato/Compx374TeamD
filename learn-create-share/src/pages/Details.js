@@ -6,7 +6,6 @@ import "../styles/Details.css";
 function Details() {
     return (
         <div className="user-information-page">
-
             <div className="Details-side-navbar">
                 <div className="info-item">
                     <b><p className="DSN">My Details</p> </b>

@@ -1,8 +1,10 @@
-import React from 'react';
-import "../styles/NavBar.css"
-import Logo from "../assets/Kitenga-Hook-Black.png"
 
-console.log(Logo);
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/NavBar.css";
+import Logo from "../assets/Kitenga-Hook-Black.png";
+//import LoginButton from "./LoginButton";
+
 
 function NavBar() {
   return (

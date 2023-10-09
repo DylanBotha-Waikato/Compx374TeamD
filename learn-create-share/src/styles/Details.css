@@ -11,6 +11,7 @@
     grid-row-gap: 15px;
     min-height: 100vh;
     overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Styles for the side navigation bar within the user information page */
