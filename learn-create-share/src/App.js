@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 
 import Home from "./pages/Home";
+import Details from './pages/Details';
 
 
 
@@ -15,6 +16,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path='/' exact Component={Home}/>
+          <Route path='/Details' exact Component={Details}/>
         </Routes> 
         <Footer />
       </Router>
