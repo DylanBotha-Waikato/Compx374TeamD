@@ -3,6 +3,7 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 import "../styles/Details.css";
 
 
+
 function Details() {
     return (
         <div className="user-information-page">
@@ -29,16 +30,16 @@ function Details() {
 
             <div className="Details-main">
                 <div className="Details-user">
-                    <p className="Details-user-info">
+                    <p className="Details-user-info" id='details-student-name'>
                         Name: Example User
                     </p>
-                    <p className="Details-user-info">
+                    <p className="Details-user-info" id='details-school-name'>
                         School: Example Primary School
                     </p>
-                    <p className="Details-user-info">
+                    <p className="Details-user-info" id='details-teacher-name'>
                         Teacher: Example Teacher
                     </p>
-                    <p className="Details-user-info">
+                    <p className="Details-user-info" id='details-account-type'>
                         Account Type: Student
                     </p>
                 </div>
@@ -47,7 +48,7 @@ function Details() {
                     <p className="Details-about-me">
                         <h2 className='h2-title'>About Me:</h2>
                     </p>
-                    <p className="about-me">
+                    <p className="about-me" id='details-about-me-1'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                         enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -56,7 +57,7 @@ function Details() {
                         nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                         sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
-                    <p className="about-me">
+                    <p className="about-me" id='details-about-me-2'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                         enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -68,22 +69,21 @@ function Details() {
                 </div>
 
                 <div className="Details-user">
-                    <p className="Details-user-info">
+                    <p className="Details-user-info" id='details-legal-guardian'>
                         Legal Guardian: Example Parent
                     </p>
-                    <p className="Details-user-info">
+                    <p className="Details-user-info" id='details-address-name'>
                         Address: XX Example Road, Ruakura, Hamilton, Waikato
                     </p>
-                    <p className="Details-user-info">
+                    <p className="Details-user-info" id='details-primary-contact'>
                         Emercency Contact Number (Primary): +XX XX XXXXX XX
                     </p>
-                    <p className="Details-user-info">
+                    <p className="Details-user-info" id='details-secondary contact'>
                         Emergency Contact Number (Secondary): +XX XX XXXXX XX
                     </p>
                 </div>
                 <div className='Details-end'>
                     <button type='submit' className='Details-button' onclick="">
-                    {/*    <img src="learn-create-share\sr" alt="edit details jpeg for edit details button */}
                         <EditNoteIcon/>Edit Details</button>
                 </div>
             </div>

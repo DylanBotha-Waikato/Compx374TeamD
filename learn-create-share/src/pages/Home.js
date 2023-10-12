@@ -6,7 +6,6 @@ import "../styles/Home.css"
 function Home() {
   return (
     <div>
-      
       <Stack direction="row" spacing={8}  className='enterbuttons' >
         <Button variant ='contained'>Sign Up</Button>
         <Button variant ='contained'>Login</Button>
