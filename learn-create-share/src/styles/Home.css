@@ -1,37 +1,36 @@
-.enterbuttons{
-    position: fixed;
-    right: 5%;
-    top: 72%;
-
+.enterbuttons {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
 }
 
-.blog{
+.blog {
     position: fixed;
-
     font-size: 225%;
     max-width: 20%;
-    right:80%;
-        top: 52%;
+    right: 80%;
+    top: 52%;
 }
 
-.getstarted{
+.getstarted {
     position: fixed;
-    right:40%;
+    right: 40%;
     top: 72%;
 }
 
-
-.applogo1{
+.applogo1 {
     display: block;
-    width: 55%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
-    
-    
 
 
 
-}div{
+
+
+}
+
+div {
     display: fixed;
     justify-content: center;
     align-items: center;

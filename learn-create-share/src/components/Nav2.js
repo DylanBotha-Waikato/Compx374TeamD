@@ -14,16 +14,16 @@ function Nav2() {
             <div>
                <ul class="navbar-nav">
                   <li class="nav-item">
-                     <a class="navbtn nav-link" href='#CreatePost'>Create Post</a>
+                     <Link class="navbtn nav-link" to="/CreatePost">Create Post</Link>
                   </li>
                   <li class="nav-item">
-                     <a class="navbtn nav-link" href='#'>Draft Posts</a>
+                     <Link class="navbtn nav-link" to="/CreatePost">Draft Post</Link>
                   </li>
                   <li class="nav-item">
-                     <a class="navbtn nav-link" href='#'>Published Posts</a>
+                     <Link class="navbtn nav-link" to="/CreatePost">Publish Post</Link>
                   </li>
                   <li class="nav-item">
-                  <Link to="/CreatePost">About</Link>
+                     <Link class="navbtn nav-link" to="/CreatePost">About</Link>
                   </li>
                </ul>
             </div>

@@ -4,7 +4,6 @@ const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const User = require("../models/user.model");
 const db = require("../models/db");
 const domains = require("../config/validDomains");
-const jwt = require("jsonwebtoken");
 
 module.exports = (passport, res) => {
   // Connect to google cloud through passport

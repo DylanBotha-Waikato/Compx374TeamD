@@ -4,15 +4,17 @@
     text-align: center;
     padding: 1%;
     font-weight: 350;
-    position:absolute;
-    left:0;
-    bottom:0;
-    right:0;
-    
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 
+
 .footer h5 {
-    font-weight: 400;
+    font-weight: 350;
     margin-bottom: 0px;
 }
+
+
 
