@@ -3,7 +3,9 @@ require("dotenv").config();
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const User = require("../models/user.model");
 const db = require("../models/db");
+const jwt = require("jsonwebtoken");
 const domains = require("../config/validDomains");
+const { response } = require("express");
 
 module.exports = (passport, res) => {
   // Connect to google cloud through passport
@@ -33,11 +35,9 @@ module.exports = (passport, res) => {
                   // Generate token from user information
                   const token = jwt.sign(
                     { userId: user.userID, googleId: user.googleID },
-                    process.env.JWT_KEY
+                    process.env.JWT_KEY,
+                    { expiresIn: "2h" }
                   );
-
-                  // Attach the token to the request object
-                  request.token = token;
 
                   // Return user via jwt
                   return done(null, token);
@@ -77,11 +77,9 @@ module.exports = (passport, res) => {
                     // If a new user is created, generate a JWT for them
                     const token = jwt.sign(
                       { userID: newUser.userID, googleID: newUser.googleID },
-                      process.env.JWT_KEY
+                      process.env.JWT_KEY,
+                      { expiresIn: "2h" }
                     );
-
-                    // Attach the token to the request object
-                    request.token = token;
 
                     return done(null, token);
                   } else {

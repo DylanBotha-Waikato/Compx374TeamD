@@ -83,8 +83,11 @@ module.exports = (app) => {
     .route("/auth/google/callback")
     .get(passport.authenticate("google", { session: false }), (req, res) => {
       if (req.isAuthenticated()) {
-        // User is authenticated, redirect to a success page or profile page
-        res.redirect("http://localhost:3001/"); // Redirect to your desired URL
+        // User is authenticated, and req.user contains the JWT
+        const token = req.user;
+
+        // Redirect the user back to the client with the JWT in the query parameter
+        res.redirect("http://localhost:3001/?token=" + token);
       } else {
         // User is not authenticated (wrong domain)
         res.redirect("http://localhost:3000/auth/google"); // redirect to login error page (need to implement)
