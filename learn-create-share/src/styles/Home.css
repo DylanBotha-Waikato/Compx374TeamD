@@ -1,3 +1,10 @@
+.home-div {
+    display: fixed;
+    justify-content: center;
+    align-items: center;
+    box-sizing: inherit;
+}
+
 .enterbuttons {
     display: flex;
     justify-content: flex-end;
@@ -23,18 +30,9 @@
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-
-
-
-
-
 }
 
-div {
-    display: fixed;
-    justify-content: center;
-    align-items: center;
-}
+
 
 
 /* @media only screen and (max-width:1000px) {

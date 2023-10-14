@@ -2,8 +2,8 @@
     background-color: #8DC1FF;
     color: black;
     text-align: center;
-    padding: 1%;
-    font-weight: 350;
+    padding: 10px;
+    height: 80px;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -12,7 +12,6 @@
 
 
 .footer h5 {
-    font-weight: 350;
     margin-bottom: 0px;
 }
 

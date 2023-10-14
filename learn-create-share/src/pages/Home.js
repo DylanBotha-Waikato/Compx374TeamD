@@ -6,11 +6,10 @@ import LoginButton from "../components/LoginButton";
 
 function Home() {
   return (
-    <div>
-      <Stack direction="row" spacing={8} className="enterbuttons">
-        <Button variant="contained">Sign Up</Button>
-        <Button variant="contained">Login</Button>
-        <LoginButton />
+    <div className="home-div" >
+      <Stack direction="row" spacing={8}  className='enterbuttons' >
+        <Button variant='contained'>Sign Up</Button>
+        <Button variant='contained'>Login</Button>
       </Stack>
 
       <img src={Logo} className="applogo1" alt="logo" />

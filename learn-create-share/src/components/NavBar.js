@@ -16,7 +16,7 @@ function NavBar() {
         Learn Create Share</Link>
         {/*<a class="navbar-brand" href="#">
           <img src={Logo} alt="Hook Logo" width="16" height="23" class="logo d-inline-block align-text-top"/>
-  Learn Create Share</a>*/}
+          Learn Create Share</a>*/}
         <div>
           <ul class="navbar-nav">
             <li class="nav-item">

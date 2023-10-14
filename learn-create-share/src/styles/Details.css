@@ -11,6 +11,8 @@
     min-height: 100vh;
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 5rem;
+    box-sizing: inherit;
 }
 
 /* Styles for the side navigation bar within the user information page */
@@ -101,4 +103,8 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+}
+
+.Details-button:hover{
+    background-color: #8BB8E8;
 }
