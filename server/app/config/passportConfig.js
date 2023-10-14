@@ -1,22 +1,18 @@
 // Import required modules
+require("dotenv").config();
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const User = require("../models/user.model");
 const db = require("../models/db");
 const domains = require("../config/validDomains");
 const jwt = require("jsonwebtoken");
 
-// CHANGE VISIBILY / PERMISSIONS TO THESE LATER
-const CLIENT_ID =
-  "1037857344941-iba1om7sfqec5jtkhea0jav89115j721.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
-
 module.exports = (passport, res) => {
   // Connect to google cloud through passport
   passport.use(
     new GoogleStrategy(
       {
-        clientID: CLIENT_ID,
-        clientSecret: CLIENT_SECRET,
+        clientID: process.env.GOOGLE_CLIENT,
+        clientSecret: process.env.GOOGLE_SECRET,
         callbackURL: "http://localhost:3000/auth/google/callback",
         passReqToCallback: true,
       },
@@ -38,7 +34,7 @@ module.exports = (passport, res) => {
                   // Generate token from user information
                   const token = jwt.sign(
                     { userId: user.userID, googleId: user.googleID },
-                    "F97B29208433F86C7C354EC45F6D8D0D347F774998C6681F14A13DB8D158ED7C"
+                    process.env.JWT_KEY
                   );
 
                   // Attach the token to the request object
@@ -82,7 +78,7 @@ module.exports = (passport, res) => {
                     // If a new user is created, generate a JWT for them
                     const token = jwt.sign(
                       { userID: newUser.userID, googleID: newUser.googleID },
-                      "F97B29208433F86C7C354EC45F6D8D0D347F774998C6681F14A13DB8D158ED7C"
+                      process.env.JWT_KEY
                     );
 
                     // Attach the token to the request object
