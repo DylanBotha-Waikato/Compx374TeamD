@@ -1,3 +1,5 @@
+// Import Modules
+const auth = require("../config/Authentication");
 const passport = require("passport");
 require("../config/passportConfig")(passport);
 
@@ -11,14 +13,14 @@ module.exports = (app) => {
   // ----------------------------------------------- Users Routes ----------------------------------------------------//
   app
     .route("/users")
-    .get(users.findAll) // The router to get all of the users
-    .post(users.create); // The router to create a new user
+    .get(auth, users.findAll) // The router to get all of the users
+    .post(auth, users.create); // The router to create a new user
 
   app
     .route("/users/userID/:userID")
-    .get(users.findByID) // The router to get the user by their id
-    .delete(users.removeByID) // The router to remove a specific user
-    .put(users.editUserByID); // The router to edit user details by their id  | needs fixing
+    .get(auth, users.findByID) // The router to get the user by their id
+    .delete(auth, users.removeByID) // The router to remove a specific user
+    .put(auth, users.editUserByID); // The router to edit user details by their id  | needs fixing
 
   app.route("/users/googleID/:googleID").get(users.findByGoogleID); // The router to get the user by their google id
 
@@ -27,50 +29,50 @@ module.exports = (app) => {
   // ----------------------------------------------- Post Routes -----------------------------------------------------//
   app
     .route("/posts")
-    .get(posts.getAllPosts) // The router to get all posts
-    .post(posts.createPost); // The router to create a new post
+    .get(auth, posts.getAllPosts) // The router to get all posts
+    .post(auth, posts.createPost); // The router to create a new post
 
   app
     .route("/posts/postID/:postID")
-    .get(posts.getPostByID) // The router to get posts by ID
-    .delete(posts.removePostByID) // The router to remove posts by ID
-    .put(posts.editPostByID); // The router to edit posts by ID
+    .get(auth, posts.getPostByID) // The router to get posts by ID
+    .delete(auth, posts.removePostByID) // The router to remove posts by ID
+    .put(auth, posts.editPostByID); // The router to edit posts by ID
 
-  app.route("/posts/userID/:userID").get(posts.getPostsByUser); // The router to get all posts made by a user
+  app.route("/posts/userID/:userID").get(auth, posts.getPostsByUser); // The router to get all posts made by a user
 
-  app.route("/posts/classID/:classID").get(posts.getPostsByClass); // The router to get all posts made by a class
+  app.route("/posts/classID/:classID").get(auth, posts.getPostsByClass); // The router to get all posts made by a class
 
   // -----------------------------------------------------------------------------------------------------------------//
 
   // ----------------------------------------------- Class Routes ----------------------------------------------------//
   app
     .route("/class")
-    .get(classes.getAllClasses) // The router to get all classes
-    .post(classes.createClass); // The router to create a new class
+    .get(auth, classes.getAllClasses) // The router to get all classes
+    .post(auth, classes.createClass); // The router to create a new class
 
   app
     .route("/class/classID/:classID")
-    .get(classes.getByID) // The router to get a class by ID
-    .delete(classes.removeClassByID); // The router to remove a class by ID
+    .get(auth, classes.getByID) // The router to get a class by ID
+    .delete(auth, classes.removeClassByID); // The router to remove a class by ID
 
-  app.route("/class/className/:className").get(classes.getByName); // The router to get a class by name
+  app.route("/class/className/:className").get(auth, classes.getByName); // The router to get a class by name
 
   // -----------------------------------------------------------------------------------------------------------------//
 
   // ----------------------------------------------- Comment Routes --------------------------------------------------//
   app
     .route("/comment")
-    .get(comment.getAllComments) // The router to get all comments
-    .post(comment.createComment); // The router to create a new comment
+    .get(auth, comment.getAllComments) // The router to get all comments
+    .post(auth, comment.createComment); // The router to create a new comment
 
   app
     .route("/comment/commentID/:commentID")
-    .get(comment.getByID) // The router to get a comment by ID
-    .delete(comment.removeByID); // The router to delete a comment by ID
+    .get(auth, comment.getByID) // The router to get a comment by ID
+    .delete(auth, comment.removeByID); // The router to delete a comment by ID
 
-  app.route("/comment/postID/:postID").get(comment.getByPostID); // The router to get comments by post
+  app.route("/comment/postID/:postID").get(auth, comment.getByPostID); // The router to get comments by post
 
-  app.route("/comment/userID/:userID").get(comment.getByUserID); // The router to get comments by user
+  app.route("/comment/userID/:userID").get(auth, comment.getByUserID); // The router to get comments by user
 
   // -----------------------------------------------------------------------------------------------------------------//
 
@@ -83,8 +85,11 @@ module.exports = (app) => {
     .route("/auth/google/callback")
     .get(passport.authenticate("google", { session: false }), (req, res) => {
       if (req.isAuthenticated()) {
-        // User is authenticated, redirect to a success page or profile page
-        res.redirect("http://localhost:3001/"); // Redirect to your desired URL
+        // User is authenticated, and req.user contains the JWT
+        const token = req.user;
+
+        // Redirect the user back to the client with the JWT in the query parameter
+        res.redirect("http://localhost:3001/?token=" + token);
       } else {
         // User is not authenticated (wrong domain)
         res.redirect("http://localhost:3000/auth/google"); // redirect to login error page (need to implement)
