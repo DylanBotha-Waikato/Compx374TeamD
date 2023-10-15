@@ -20,7 +20,7 @@ module.exports = (app) => {
     .route("/users/userID/:userID")
     .get(auth, users.findByID) // The router to get the user by their id
     .delete(auth, users.removeByID) // The router to remove a specific user
-    .put(auth, users.editUserByID); // The router to edit user details by their id  | needs fixing
+    .put(auth, users.editUserByID); // The router to edit user details by their id
 
   app.route("/users/googleID/:googleID").get(users.findByGoogleID); // The router to get the user by their google id
 
