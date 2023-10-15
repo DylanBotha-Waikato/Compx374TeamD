@@ -87,24 +87,18 @@ User.createUser = (newUser, result) => {
 };
 
 //Edit a user by their id
-User.editById = (editedData, result) => {
-  //Execute the query to edit the user
-  db.query(
-    "UPDATE Users SET googleID=?, fname=?, lname=?, profilePicture=?, classID=?, role=? WHERE userID=?",
-    editedData,
-    (err, res) => {
-      //If erroroccurs, display
-      if (err) {
-        console.log("Error:", err);
-        result(err, null);
-        return;
-      }
-
-      //else, display the results
-      console.log("User has been updated by id", res);
-      result(null, res);
+User.editById = (sql, values, result) => {
+  // Execute the query to edit the user
+  db.query(sql, values, (err, res) => {
+    if (err) {
+      console.log("Error:", err);
+      result(err, null);
+      return;
     }
-  );
+
+    console.log("User has been updated by id", res);
+    result(null, res);
+  });
 };
 
 module.exports = User;
