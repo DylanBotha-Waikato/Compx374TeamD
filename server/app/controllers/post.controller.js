@@ -1,7 +1,12 @@
 // Import model
 const Post = require("../models/post.model");
 
-// Controller to GET all posts
+/**
+ * Controller to get all posts
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.getAllPosts = (req, res) => {
   Post.retrieveAllPosts((err, data) => {
     // If an error occurs
@@ -13,7 +18,12 @@ exports.getAllPosts = (req, res) => {
   });
 };
 
-// Controller to create a new post
+/**
+ * Controller to create a new post
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.createPost = (req, res) => {
   //If no data is inserted, display error
   if (!req.body) {
@@ -39,7 +49,12 @@ exports.createPost = (req, res) => {
   });
 };
 
-// Controller to remove a specific post
+/**
+ * Controller to remove a post by a post ID
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.removePostByID = (req, res) => {
   //if no id is taken display error
   if (!req.params.postID) {
@@ -60,7 +75,12 @@ exports.removePostByID = (req, res) => {
   });
 };
 
-// Controller to GET a post by its ID
+/**
+ * Controller to get a post by it's ID
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.getPostByID = (req, res) => {
   //if no id is taken display error
   if (!req.params.postID) {
@@ -81,7 +101,12 @@ exports.getPostByID = (req, res) => {
   });
 };
 
-// Controller to edit a post by its ID
+/**
+ * Controller to edit a post by it's ID
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.editPostByID = (req, res) => {
   // If no body is taken dsplay error
   if (!req.body || !req.params) {
@@ -107,7 +132,12 @@ exports.editPostByID = (req, res) => {
   });
 };
 
-// Controller to get all posts from a class
+/**
+ * Controller to get all posts from a class (classID)
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.getPostsByClass = (req, res) => {
   //if no id is taken display error
   if (!req.params.classID) {
@@ -128,7 +158,12 @@ exports.getPostsByClass = (req, res) => {
   });
 };
 
-// Controller to get all posts from a user
+/**
+ * Controller to get all posts from a user
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.getPostsByUser = (req, res) => {
   //if no id is taken display error
   if (!req.params.userID) {

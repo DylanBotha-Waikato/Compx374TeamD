@@ -7,6 +7,12 @@ const jwt = require("jsonwebtoken");
 const domains = require("../config/validDomains");
 const { response } = require("express");
 
+/**
+ * Configure and initialize a Google OAuth2 strategy for passport.js.
+ *
+ * @param {object} passport - The Passport.js instance.
+ * @param {object} res - Express.js response object
+ */
 module.exports = (passport, res) => {
   // Connect to google cloud through passport
   passport.use(

@@ -1,6 +1,11 @@
 const User = require("../models/user.model");
 
-//The controller to get all users
+/**
+ * Controller to get all users
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.findAll = (req, res) => {
   //execute retrieval
   User.retrieveAllUsers((err, data) => {
@@ -13,7 +18,12 @@ exports.findAll = (req, res) => {
   });
 };
 
-//The controller to get a user by their ID
+/**
+ * Controller to find a user by their User ID
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.findByID = (req, res) => {
   //If no data is inserted, display error
   if (!req.body) {
@@ -34,7 +44,12 @@ exports.findByID = (req, res) => {
   });
 };
 
-//The controller to get a user by their google ID
+/**
+ * Controller to find a user by their Google ID
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.findByGoogleID = (req, res) => {
   //If no data is inserted, display error
   if (!req.params) {
@@ -55,7 +70,12 @@ exports.findByGoogleID = (req, res) => {
   });
 };
 
-//The controller to remove a user by their ID
+/**
+ * Controller to create a new user
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.removeByID = (req, res) => {
   //If no data is inserted, display error
   if (!req.body) {
@@ -76,7 +96,12 @@ exports.removeByID = (req, res) => {
   });
 };
 
-//The controller to create a user
+/**
+ * Controller to create a new user
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.create = (req, res) => {
   //If no data is inserted, display error
   if (!req.body) {
@@ -104,7 +129,12 @@ exports.create = (req, res) => {
   });
 };
 
-//The controller to edit a user
+/**
+ * Controller to edit a user by their user ID
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.editUserByID = (req, res) => {
   // Get Input
   const userID = req.params.userID;
