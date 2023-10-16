@@ -1,30 +1,52 @@
-import React from 'react';
-import Widget from '../components/Widget';
-import Nav2 from '../components/Nav2';
-import DraftEditor from '../components/DraftEditor';
-import DisplayPost from '../components/DisplayPosts';
+import React, { useState, useEffect } from 'react';
+import { EditorState } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import { convertToHTML } from 'draft-convert';
+import DOMPurify from 'dompurify';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import "../styles/DraftEditor.css";
 
 
-function CreatePost() {
+function TextEditor() {
+  const [editorState, setEditorState] = useState(
+    () => EditorState.createEmpty(),
+  );
+  const [convertedContent, setConvertedContent] = useState(null);
+
+  useEffect(() => {
+    let html = convertToHTML(editorState.getCurrentContent());
+    setConvertedContent(html);
+  }, [editorState]);
+
+  function createMarkup(html) {
+    return {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
+  const test = document.getElementsByClassName('preview');
+
+  console.log(test);
+
   return (
+    <div className="textEditor">
+      <header className="App-header">
+        Create Post
+      </header>
+      <button>Press me</button>
+      <Editor
+        editorState={editorState}
+        onEditorStateChange={setEditorState}
+        wrapperClassName="wrapper-class"
+        editorClassName="editor-class"
+        
+      />
   
-    <div>
-      <div class="container text-center">
-        <div class="row">
-          <Nav2 />
-        </div>
-        <div class="row">
-          <div class="col-9">
-            <DisplayPost />
-          </div>
-          <div class="col-3">
-            <Widget />
-          </div>
-        </div>
+      <div className="preview" dangerouslySetInnerHTML={createMarkup(convertedContent)}>
       </div>
-    </div>
-    
+      
+  </div>
   )
 }
 
-export default CreatePost
+export default TextEditor;
+

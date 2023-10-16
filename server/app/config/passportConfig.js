@@ -5,8 +5,8 @@ const db = require("../models/db");
 const domains = require("../config/validDomains");
 
 // CHANGE VISIBILY / PERMISSIONS TO THESE LATER
-const CLIENT_ID = "";
-const CLIENT_SECRET = "";
+const CLIENT_ID = "1037857344941-iba1om7sfqec5jtkhea0jav89115j721.apps.googleusercontent.com";
+const CLIENT_SECRET = "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";
 
 module.exports = (passport, res) => {
   // Connect to google cloud through passport

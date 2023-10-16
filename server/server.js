@@ -8,7 +8,7 @@ const app = express();
 // Use express-session middleware before passport initialization
 app.use(
   session({
-    secret: "", // Replace with a client secret
+    secret: "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", // Replace with a client secret
     resave: false,
     saveUninitialized: true,
   })
@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
 require("./app/routes/routes.js")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`CORS enabled Express web server is running on port ${PORT}.`);

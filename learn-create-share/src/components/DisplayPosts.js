@@ -5,14 +5,19 @@ import DraftEditor from './DraftEditor';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function DisplayPosts() {
-   const [data, setData] = useState([]);
+  const IDUser = 321;
+  const url = `http://localhost:3000/posts/userID/${IDUser}`;
+  const [data, setData] = useState([]);
 
    useEffect(() => {
-     fetch('http://localhost:8000/posts')
+     fetch(url)
        .then((response) => response.json())
-       .then((data) => setData(data));
+       .then((data) => { setData(data)})
+       .catch((err) => {
+        console.log(err.message);
+       });
    }, []);
- 
+
    return (
      <div>
        {data.map((item) => (
