@@ -91,8 +91,9 @@ module.exports = (app) => {
         // Redirect the user back to the client with the JWT in the query parameter
         res.redirect("http://localhost:3001/?token=" + token);
       } else {
+        console.log("Yipee");
         // User is not authenticated (wrong domain)
-        res.redirect("http://localhost:3000/auth/google"); // redirect to login error page (need to implement)
+        res.redirect("http://localhost:3001/LoginError"); // redirect to login error page
       }
     });
 };
