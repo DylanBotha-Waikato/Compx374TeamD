@@ -5,11 +5,9 @@ const User = require("../models/user.model");
 const db = require("../models/db");
 const jwt = require("jsonwebtoken");
 const domains = require("../config/validDomains");
-const { response } = require("express");
 
 /**
- * Configure and initialize a Google OAuth2 strategy for passport.js.
- *
+ * Configure and initialize a Google OAuth2 strategy for passport.js
  * @param {object} passport - The Passport.js instance.
  * @param {object} res - Express.js response object
  */
