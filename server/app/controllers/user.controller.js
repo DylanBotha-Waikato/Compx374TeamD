@@ -1,21 +1,29 @@
 const User = require("../models/user.model");
 
-//The controller to get all users
+/**
+ * Controller to get all users
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.findAll = (req, res) => {
   //execute retrieval
   User.retrieveAllUsers((err, data) => {
     //display error
     if (err)
-      res
-        .status(500)
-        .send({
-          message: err.message || "Some error occurred while retrieving users.",
-        });
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving users.",
+      });
     else res.send(data);
   });
 };
 
-//The controller to get a user by their ID
+/**
+ * Controller to find a user by their User ID
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.findByID = (req, res) => {
   //If no data is inserted, display error
   if (!req.body) {
@@ -29,16 +37,19 @@ exports.findByID = (req, res) => {
   User.findUserByID(userID, (err, data) => {
     //display error
     if (err)
-      res
-        .status(500)
-        .send({
-          message: err.message || "Some error occurred while getting the user.",
-        });
+      res.status(500).send({
+        message: err.message || "Some error occurred while getting the user.",
+      });
     else res.send(data);
   });
 };
 
-//The controller to get a user by their google ID
+/**
+ * Controller to find a user by their Google ID
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.findByGoogleID = (req, res) => {
   //If no data is inserted, display error
   if (!req.params) {
@@ -52,16 +63,19 @@ exports.findByGoogleID = (req, res) => {
   User.findUserByGoogleID(googleID, (err, data) => {
     //display error
     if (err)
-      res
-        .status(500)
-        .send({
-          message: err.message || "Some error occurred while getting the user.",
-        });
+      res.status(500).send({
+        message: err.message || "Some error occurred while getting the user.",
+      });
     else res.send(data);
   });
 };
 
-//The controller to remove a user by their ID
+/**
+ * Controller to create a new user
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.removeByID = (req, res) => {
   //If no data is inserted, display error
   if (!req.body) {
@@ -75,17 +89,19 @@ exports.removeByID = (req, res) => {
   User.removeUserByID(userID, (err, data) => {
     //display error
     if (err)
-      res
-        .status(500)
-        .send({
-          message:
-            err.message || "Some error occurred while creating the user.",
-        });
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the user.",
+      });
     else res.send(data);
   });
 };
 
-//The controller to create a user
+/**
+ * Controller to create a new user
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.create = (req, res) => {
   //If no data is inserted, display error
   if (!req.body) {
@@ -106,44 +122,81 @@ exports.create = (req, res) => {
   User.createUser(user, (err, data) => {
     //display error
     if (err)
-      res
-        .status(500)
-        .send({
-          message:
-            err.message || "Some error occurred while creating the user.",
-        });
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the user.",
+      });
     else res.send(data);
   });
 };
 
-//The controller to edit a user
+/**
+ * Controller to edit a user by their user ID
+ * @param {object} req - Express.js request object
+ * @param {object} res - Express.js response object
+ * @returns {void}
+ */
 exports.editUserByID = (req, res) => {
-  //if no body is taken dsplay error
-  if (!req.body) {
-    res.status(400).send({ message: "Content for editing is empty!" });
+  // Get Input
+  const userID = req.params.userID;
+  const updateFields = req.body;
+
+  // Check if userID is given
+  if (!userID) {
+    res.status(400).send({ message: "User ID is missing." });
+    return;
   }
 
-  //Initialise parameters
-  const googleID = req.body.googleID;
-  const username = req.body.username;
-  const fname = req.body.fname;
-  const lname = req.body.lname;
-  const profilePicture = req.body.profilePicture;
-  const classID = req.body.classID;
+  // Check if at least one field is given
+  if (Object.keys(updateFields).length === 0) {
+    res.status(400).send({ message: "No fields to update specified." });
+    return;
+  }
 
-  //execute the edting
-  User.editById(
-    [googleID, username, fname, lname, profilePicture, classID],
-    (err, data) => {
-      //display error
-      if (err)
-        res
-          .status(500)
-          .send({
-            message:
-              err.message || "Some error occurred while editing the user.",
-          });
-      else res.send(data);
+  // Coloumns available to edit
+  const validFields = [
+    "googleID",
+    "fname",
+    "lname",
+    "profilePicture",
+    "classID",
+    "role",
+  ];
+
+  // Filter out fields that are not valid
+  const validUpdateFields = {};
+  for (const field in updateFields) {
+    if (validFields.includes(field)) {
+      validUpdateFields[field] = updateFields[field];
     }
-  );
+  }
+
+  // Check if at least one valid field is given
+  if (Object.keys(validUpdateFields).length === 0) {
+    res.status(400).send({ message: "No valid fields to update specified." });
+    return;
+  }
+
+  const updateValues = [];
+  const updateSets = [];
+
+  // Format the set and value pairs
+  for (const field in validUpdateFields) {
+    updateSets.push(`${field} = ?`);
+    updateValues.push(validUpdateFields[field]);
+  }
+
+  // Construct the SQL query
+  const sql = `UPDATE Users SET ${updateSets.join(", ")} WHERE userID = ?`;
+  updateValues.push(userID);
+
+  // Execute the query
+  User.editById(sql, updateValues, (err, data) => {
+    if (err) {
+      res.status(500).send({
+        message: err.message || "Some error occurred while editing the user.",
+      });
+    } else {
+      res.send(data);
+    }
+  });
 };

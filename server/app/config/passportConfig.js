@@ -1,20 +1,23 @@
 // Import required modules
+require("dotenv").config();
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const User = require("../models/user.model");
 const db = require("../models/db");
+const jwt = require("jsonwebtoken");
 const domains = require("../config/validDomains");
 
-// CHANGE VISIBILY / PERMISSIONS TO THESE LATER
-const CLIENT_ID = "1037857344941-iba1om7sfqec5jtkhea0jav89115j721.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
-
+/**
+ * Configure and initialize a Google OAuth2 strategy for passport.js
+ * @param {object} passport - The Passport.js instance.
+ * @param {object} res - Express.js response object
+ */
 module.exports = (passport, res) => {
   // Connect to google cloud through passport
   passport.use(
     new GoogleStrategy(
       {
-        clientID: CLIENT_ID,
-        clientSecret: CLIENT_SECRET,
+        clientID: process.env.GOOGLE_CLIENT,
+        clientSecret: process.env.GOOGLE_SECRET,
         callbackURL: "http://localhost:3000/auth/google/callback",
         passReqToCallback: true,
       },
@@ -32,8 +35,16 @@ module.exports = (passport, res) => {
                 if (results.length === 1) {
                   // Get User
                   const user = results[0];
-                  // Return user
-                  return done(null, user);
+
+                  // Generate token from user information
+                  const token = jwt.sign(
+                    { userId: user.userID, googleId: user.googleID },
+                    process.env.JWT_KEY,
+                    { expiresIn: "2h" }
+                  );
+
+                  // Return user via jwt
+                  return done(null, token);
                 } else {
                   // Get user email to check if account can be created
                   let userDomain = profile.emails[0].value.split("@")[1];
@@ -67,8 +78,14 @@ module.exports = (passport, res) => {
                       }
                     });
 
-                    // Return User
-                    return done(null, newUser);
+                    // If a new user is created, generate a JWT for them
+                    const token = jwt.sign(
+                      { userID: newUser.userID, googleID: newUser.googleID },
+                      process.env.JWT_KEY,
+                      { expiresIn: "2h" }
+                    );
+
+                    return done(null, token);
                   } else {
                     // User domain isnt correct
                     return done(null, false);

@@ -1,4 +1,5 @@
 // Setup Express
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
@@ -8,7 +9,7 @@ const app = express();
 // Use express-session middleware before passport initialization
 app.use(
   session({
-    secret: "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", // Replace with a client secret
+    secret: process.env.GOOGLE_SECRET, // Replace with a client secret
     resave: false,
     saveUninitialized: true,
   })
