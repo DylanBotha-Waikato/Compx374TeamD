@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Button } from "@mui/material";
 
-const LoginButton = () => {
+const LoginButton = ({ buttonText, className }) => {
   const handleGoogleLogin = () => {
     // Redirect to the server-side Google authentication route
     window.location.href = "http://localhost:3000/auth/google";
@@ -30,7 +31,13 @@ const LoginButton = () => {
   // Render the button and display the token if available
   return (
     <div>
-      <button onClick={handleGoogleLogin}>Login with Google</button>
+      <Button
+        variant="contained"
+        onClick={handleGoogleLogin}
+        className={className}
+      >
+        {buttonText}
+      </Button>
     </div>
   );
 };
