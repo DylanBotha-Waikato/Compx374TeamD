@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
+import Cookies from "js-cookie";
 
 const LoginButton = ({ buttonText, className }) => {
   const handleGoogleLogin = () => {
@@ -18,7 +19,7 @@ const LoginButton = ({ buttonText, className }) => {
     if (token) {
       console.log("Received token:", token);
       // Store the token securely (e.g., in localStorage)
-      localStorage.setItem("token", token);
+      Cookies.set("token", token);
       setJwtToken(token);
     }
   }
