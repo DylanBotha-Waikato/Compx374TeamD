@@ -1,38 +1,42 @@
+/*This is the style sheet for the fraft editor component and the displays post component*/
 .App-header {
-   background-color: #282c34;
-   min-height: 5vh;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   font-size: calc(10px + 2vmin);
-   color: white;
-   margin-bottom: 5vh;
-   text-align: center;
-   padding: 12px;
-   margin-left: 10%;
-   margin-right: 10%;
-  }
+  min-height: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+  margin-bottom: 5vh;
+  text-align: center;
+  padding: 12px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
 
 .textEditor {
-   margin-left: 10%;
-   margin-right: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .wrapper-class {
-   padding: 1rem;
-   border: 1px solid #ccc;
- }
- .editor-class {
-   background-color:lightgray;
-   padding: 1rem;
-   border: 1px solid #ccc;
- }
- .toolbar-class {
-   border: 1px solid #ccc;
- }
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
 
- .preview {
-   padding: 1rem;
-   margin-top: 1rem;
- }
+.editor-class {
+  background-color:lightgray;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+
+.toolbar-class {
+  border: 1px solid #ccc;
+}
+
+.preview {
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-right: 10%;
+  margin-left: 10%;;
+}

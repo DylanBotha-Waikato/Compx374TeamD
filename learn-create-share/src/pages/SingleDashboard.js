@@ -4,9 +4,9 @@ import Posts from '../components/Posts';
 import Nav2 from '../components/Nav2';
 import DisplayPosts from '../components/DisplayPosts';
 
+//Creates and displays the Users dashboard: Posts, widgets etc
 function SingleDashboard() {
   return (
-  
     <div>
       <div class="container text-center">
         <div class="row">
@@ -15,7 +15,6 @@ function SingleDashboard() {
         <div class="row">
           <div class="col-9">
               <DisplayPosts />
-              
           </div>
           <div class="col-3">
             <Widget />

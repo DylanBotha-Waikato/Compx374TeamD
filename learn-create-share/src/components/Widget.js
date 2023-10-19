@@ -4,6 +4,8 @@ import '../styles/Widget.css'
 
 function Widget() {
    return(
+      //Creates the widgets side bar where about me info and any other info can be shown
+      //to be displayed on the single user dashboard.
       <div class="widget container text-center">
          <div class="card">
             <div class="card-body">

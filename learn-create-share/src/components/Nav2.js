@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/NavBar.css";
 
 
-
+//The second nav bar allows users to navigate between the post options and displays their name
 function Nav2() {
    return (
       <>
@@ -23,7 +23,7 @@ function Nav2() {
                      <Link class="navbtn nav-link" to="/CreatePost">Publish Post</Link>
                   </li>
                   <li class="nav-item">
-                     <Link class="navbtn nav-link" to="/Detail">About</Link>
+                     <Link class="navbtn nav-link" to="/Detail">Other</Link>
                   </li>
                </ul>
             </div>
